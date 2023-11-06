@@ -3,4 +3,4 @@ title: Lumidora
 version: 1
 prerelease: 0
 nav:
-  - modules/ROOT/nav.adoc
+  - modules/lumidora-chatbot/nav.adoc

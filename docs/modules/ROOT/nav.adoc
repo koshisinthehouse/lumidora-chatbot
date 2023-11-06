@@ -1,4 +1,3 @@
 * xref:chatbot.adoc[]
-* xref:chatbot.adoc[]
 
 

@@ -1,6 +1,6 @@
 name: lumidora-chatbot
-title: lumidora-chatbot
+title: Lumidora Chatbot
 version: 1
 prerelease: 0
 nav:
-  - modules/lumidora-chatbot/nav.adoc
+  - modules/ROOT/nav.adoc

@@ -3,5 +3,5 @@
 
 [plantuml]
 ----
-include::example$systemkontext-funktional.plantuml[]
+include::example$bausteinansicht/bausteinansicht.plantuml[]
 ----

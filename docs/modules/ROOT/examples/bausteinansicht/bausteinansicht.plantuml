@@ -1,0 +1,30 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+' uncomment the following line and comment the first to use locally
+' !include C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Bausteindiagramm für lumidora
+
+Person(benutzer, "User", "")
+
+Container_Boundary(api, "lumidora") {
+    Component(tts, "TTS", "Text to Speech", "Wandelt Text in Sprache")
+    Component(stt, "STT", "Speech to Text", "Wandelt Sprache in Text")
+    Component(chatbot, "Chatbot", "Chatbot", "Herz des Systems. Hat Schnittstellen zu allen anderen Bausteinen")
+    Component(console, "Console", "Console", "Aufruf der Bausteine von der Konsole aus")
+    Component(vgen, "vgen", "Videogenerierung", "Generiert ein Video mithilfe einer Audiodatei und einem Portrait Bild.")
+
+}
+
+Rel(benutzer, chatbot, "benutzt", "")
+Rel(benutzer, console, "benutzt", "")
+
+Rel(chatbot, console, "benutzt", "")
+
+Rel(console, tts, "benutzt", "")
+Rel(console, stt, "benutzt", "")
+Rel(console, vgen, "benutzt", "")
+
+@enduml

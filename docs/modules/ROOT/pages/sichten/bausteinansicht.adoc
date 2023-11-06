@@ -1,0 +1,7 @@
+= Bausteinansicht
+:navtitle: Bausteinansicht
+
+[plantuml]
+----
+include::example$systemkontext-funktional.plantuml[]
+----

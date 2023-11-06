@@ -1,0 +1,17 @@
+@startuml
+!include ../../partials/diagrams/plantuml-stdlib/C4-PlantUML/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Systemkontext Funktional "Was""
+
+Person(benutzer, "Allgemeiner Benutzer", "")
+Person(kontentersteller, "Kontentersteller", "")
+Person(softwareentwickler, "Softwareentwickler", "")
+System(lumidora, "Lumidora", "Persönlicher Assistent auf Basis künstlicher Intelligenz")
+
+Rel(benutzer, lumidora, "verwendet")
+Rel(kontentersteller, lumidora, "verwendet")
+Rel(softwareentwickler, lumidora, "verwendet")
+
+@enduml

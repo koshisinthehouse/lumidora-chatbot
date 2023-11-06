@@ -1,0 +1,6 @@
+name: lumidora
+title: Lumidora
+version: 1
+prerelease: 0
+nav:
+  - modules/ROOT/nav.adoc

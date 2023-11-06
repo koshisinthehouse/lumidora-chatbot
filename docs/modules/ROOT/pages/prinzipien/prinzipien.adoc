@@ -1,0 +1,25 @@
+= Prinzipien
+:navtitle: Prinzipien
+
+== Allgemeine Prinzipien
+
+* Für dieses Projekt wird nur Open Source Software verwendet.
+* Technische Vielfalt wird kontrolliert um Komplexität zu reduzieren
+* Einfache Lösungen: Die Lösung muss so einfach wie möglich sein. Gibt es Komplexität, wird diese möglichst hinter einem einfachen Interface versteckt.
+* Patente, Copyrights und Geheimnisse werden geschützt und berücksichtigt
+
+== Daten
+* Informationsoffenheit – Informationen müssen offen und verfügbar sein, um Produktivität und Innovation zu unterstützen
+* Es sollte möglichst mit aktuellen Daten und Models gearbeitet werden
+
+== Serviceorientierte Architektur
+* Aufgabeneinteilung (Separation of Concerns) – Es wird möglich sein, eine Komponente mit minimalen Auswirkungen auf andere Komponenten zu ändern
+
+== Benutzerfreundlichkeit
+* Benutzerinteraktion muss maximal einfach und maximal nützlich sein. Der Assistent soll den Benutzer bei seiner Arbeit schnell, effizient und einfach dienlich sein.
+
+
+
+
+
+

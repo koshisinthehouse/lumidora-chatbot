@@ -1,0 +1,70 @@
+= Organisatorische Randbedingungen
+:navtitle: Organisatorisch
+
+[quote,Conways Law, How Do Committees Invent?]
+Organisationen, die Systeme entwerfen, […] sind gezwungen, Entwürfe zu erstellen, die die Kommunikationsstrukturen dieser Organisationen abbilden.
+
+In diesem Abschnitt geht es um die Organisatorischen Randbedingunen, welch für die Anwendung lumidora gelten.
+
+== Organisation
+=== Organisationsstruktur der Auftraggeber
+Es handelt sich um ein privates Open Source Projekt. Daher muss die Organisationsstruktur nicht berücksichtigt werde und es gibt diesbezüglich keine Randbedingungen.
+
+=== Eigene Organisationsstruktur
+Keine eigene Organisationsstruktur da privates Open Source Projekt.
+
+=== Kooperationspartner
+Keine Kooperationspartner.
+
+=== Vorhandenes Know How
+Grundsätzliches Know How vorhanden. Lernwillig und motiviert mehr zu lernen.
+
+=== Teamgröße
+Initial eine One Man Show.
+
+=== Teamaufteilung & Standorte
+Keine Teamaufteilung notwendig aktuell, da nur eine Person daran entwickelt.
+
+=== Verfügbarkeit des Teams
+Privates Projekt, daher keine klare Aussage diesbezüglich möglich.
+
+== Ressourcen
+
+=== Zeit
+Privates Projekt, keine klare Zeitaufteilung möglich.
+
+=== Geld
+Kein Geld vorhanden.
+
+== Standards
+=== Vorgehensmodell
+Iterativ und inkrementell nach Scrum, Architekturvorgehen : Brezelvorgehen :-)
+
+=== Entwicklungswerkzeuge
+Keine Angaben.
+
+=== Testwerkzeuge und -prozesse
+Keine Angaben.
+
+=== Abnahme- und Freigabeprozess
+Keine Angaben.
+
+=== Service Level Agreements
+Keine Angaben.
+
+=== Qualitätsstandards
+Keine Qualitätsstandards, allerdings werden konkrete Qualitätsanforderungen im Abschnitt Qualitätsanforderungen später definiert.
+
+=== Dokumentationsrichtlinien
+Dokumentation nach Arc 42
+
+== Juristische Fragen
+
+Grundsätzlich gibt es im AI Umfeld viele juristische Unklarheiten. Da es sich um ein Privates Projekt handelt und kein Juristisches Know How vorhanden ist,
+kann aktuell nicht darauf eingegangen werden. Hier wird während des Projektverlaufs versucht, die Juristischen Fragen zu beantworten.
+
+=== Datenschutz
+=== Haftungsfragen
+=== Nachweispflicht
+=== Internationale Rechtsfragen
+=== Revisionssicherheit

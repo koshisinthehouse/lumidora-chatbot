@@ -1,7 +1,0 @@
-= Bausteinansicht
-:navtitle: Bausteinansicht
-
-[plantuml]
-----
-include::example$bausteinansicht/bausteinansicht.plantuml[]
-----

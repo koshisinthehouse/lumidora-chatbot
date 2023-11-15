@@ -5,6 +5,9 @@ chatbot based on gpt4all
 # useful python commands
 ## poetry
 
+### install poetry
+    pip install poetry
+
 ### Poetry Konfiguration anzeigen
     poetry config --list
 
@@ -15,7 +18,7 @@ chatbot based on gpt4all
     # System Python Version verwenden
     poetry shell
     # Mit spezieller python version
-    poetry env use  D:/Lumidora/resources/python/python-3.11.0-embed-amd64/python.exe
+    poetry env use D:/_dev/extract/python/python.exe
 
 ### Info über die Virtuelle Umgebung
     poetry env info
@@ -28,6 +31,12 @@ chatbot based on gpt4all
 
 ### Dev Dependency
     poetry add [package] --group dev
+
+### Script starten
+    poetry run cmd
+
+### requrements.txt erzeugen
+    poetry export -f requirements.txt --output requirements.txt
 
 
 

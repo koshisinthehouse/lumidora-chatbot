@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "lumidora-chatbot"
+name = "chatbot"
 version = "0.1.0"
 description = ""
 authors = ["Dominik Bruhn <dominikbruhn@googlemail.com>"]
@@ -8,11 +8,13 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "3.11"
 langchain = "^0.0.335"
-
-
+gpt4all = "^2.0.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.3"
+
+[tool.poetry.scripts]
+cmd = "chatbot.main:main"
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,3 +1,4 @@
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.llms import GPT4All
 from langchain.chains import  LLMChain
 from langchain.prompts import PromptTemplate
@@ -9,8 +10,8 @@ def main():
     # here we say our LLM to think step by step and give the answer
 
     template = """
-    Let's think step by step of the question: {question}
-    Based on all the thought the final answer becomes:
+    Mache einen Witz über {question}
+    Witz:
     """
     prompt = PromptTemplate(template=template, input_variables=["question"])
 
@@ -23,13 +24,19 @@ def main():
 
     # initialize the LLM and make chain it with the prompts
 
+    # Callbacks support token-wise streaming
+    callbacks = [StreamingStdOutCallbackHandler()]
+
     llm = GPT4All(
         model=local_path,
+        callbacks=callbacks,
         backend="llama",
     )
 
-    llm_chain = LLMChain(prompt=prompt, llm=llm, verbose=True, model_kwargs={"max_length":64, "max_new_tokens":100})
+    llm_chain = LLMChain(prompt=prompt, llm=llm, verbose=True)
 
     # run the chain with your query (question)
+    question = "Enten"
 
-    llm_chain('Who is the CEO of Google and why he became the ceo of Google?')
+    llm_chain.run(question)
+    #llm_chain('Who is the CEO of Google and why he became the ceo of Google?')

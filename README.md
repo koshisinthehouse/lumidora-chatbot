@@ -39,4 +39,8 @@ chatbot based on gpt4all
     poetry export -f requirements.txt --output requirements.txt
 
 
+## unicorn starten
+unicorn src.chatbot.fastapi:app
+
+
 

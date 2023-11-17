@@ -40,7 +40,7 @@ chatbot based on gpt4all
 
 
 ## unicorn starten
-unicorn src.chatbot.fastapi:app
+    unicorn src.chatbot.fastapi:app --reload
 
 
 

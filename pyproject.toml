@@ -16,7 +16,7 @@ uvicorn = {extras = ["standard"], version = "^0.24.0.post1"}
 pytest = "^7.4.3"
 
 [tool.poetry.scripts]
-cmd = "chatbot.main:main"
+cmd = "main:main"
 
 [build-system]
 requires = ["poetry-core"]

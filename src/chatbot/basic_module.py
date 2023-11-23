@@ -49,4 +49,7 @@ class Chatbot:
         output_dict = self.parser.parse(output)
         output_json_string = json.dumps(output_dict)
         json_object = json.loads(output_json_string)
+
+
+        #Output PArser Fix: https://python.langchain.com/docs/modules/model_io/output_parsers/output_fixing_parser
         return json_object["translation"]

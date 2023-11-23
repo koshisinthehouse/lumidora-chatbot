@@ -1,11 +1,6 @@
-from src.chatbot.chatbot_basic_module import Chatbot
-from src.chatbot.fastapi import Chatbot
-from src.chatbot.fastapi import *
+from src.chatbot.basic_module import Chatbot
 
 def main():
-    print("HALO")
-
-if __name__ == "__main__":
     print("Chatbot")
 
     # Specify the model path
@@ -20,3 +15,6 @@ if __name__ == "__main__":
 
     # Run the chat using the defined template and input text
     output_dict = chatbot.run_chat(input_text)
+
+if __name__ == "__main__":
+    main()

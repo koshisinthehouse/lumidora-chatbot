@@ -42,17 +42,11 @@ class Chatbot:
         )
         message = prompt.format_prompt(input=input_text)
 
-        # Run the chat with the given input
+        # run the chat with the given input
         output = self.llm(message.to_string())
-        print(output)
 
-        # Parse the output
+        # parse the output
         output_dict = self.parser.parse(output)
-        return output_dict
-
-        # Save the output dictionary to a JSON file
-        #output_dict_path = "output_dict.json"
-        #with open(output_dict_path, "w", encoding="utf-8") as json_file:
-            #json.dump(output_dict, json_file, ensure_ascii=False, indent=4)
-
-
+        output_json_string = json.dumps(output_dict)
+        json_object = json.loads(output_json_string)
+        return json_object["translation"]

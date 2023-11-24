@@ -32,15 +32,14 @@ chatbot based on gpt4all
 ### Dev Dependency
     poetry add [package] --group dev
 
-### Script starten
-    poetry run cmd
-
 ### requrements.txt erzeugen
     poetry export -f requirements.txt --output requirements.txt
 
+## chatbot starten
+    poetry run cmd
 
 ## unicorn starten
-    poetry run uvicorn fastapi:app --reload
+    poetry run uvicorn src.chatbot.fastapi:app --reload
 
 
 

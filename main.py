@@ -4,7 +4,7 @@ def main():
     print("Chatbot")
 
     # Specify the model path
-    model_path = "D:/Lumidora/resources/llm/mistral-7b-openorca.Q4_0.gguf"
+    model_path = "C:/_dev/repositories/Lumidora/resources/llm/resources/mistral-7b-openorca.Q4_0.gguf"
 
     # Create an instance of the Chatbot class
     chatbot = Chatbot(model_path)

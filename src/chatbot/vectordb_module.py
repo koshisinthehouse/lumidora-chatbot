@@ -13,7 +13,7 @@ class Vec:
         self.llm = GPT4All(
             model=self.model_path,
             backend="llama",
-            max_tokens=2048
+            max_tokens=4096
         )
 
     def run(self):
@@ -21,7 +21,8 @@ class Vec:
         # Loaders
         # Um Daten mit einem LLM zu verwenden, müssen Dokumente zunächst in eine Vectordatenbank. Der erste Schritt ist diese über einen Loader in memory zu laden
         text_loader_kwargs={'autodetect_encoding': True}
-        loader = DirectoryLoader('./datastore', glob="**/*.txt", loader_cls=TextLoader, show_progress=True, loader_kwargs=text_loader_kwargs)
+        #, loader_kwargs=text_loader_kwargs
+        loader = DirectoryLoader('./datastore', glob="**/*.py", loader_cls=TextLoader, show_progress=True, loader_kwargs=text_loader_kwargs)
         docs = loader.load()
         print("Dokumente geladen.")
 
@@ -40,6 +41,7 @@ class Vec:
         # Texte werden nicht als Text in der Datenbank gespeichert, sondern als Vectorrepräenstation. Embeddings sind eine Art von Wortdarstellung, die die semantische Bedeutung von Wörtern in einem Vektorraum darstellt.
         from langchain.embeddings import GPT4AllEmbeddings
         embeddings = GPT4AllEmbeddings()
+        
 
         # Laden der Vectoren in die VectorDB (FAISS)
         from langchain.vectorstores.faiss import FAISS
@@ -60,7 +62,7 @@ class Vec:
         # Chains
         chain_type_kwargs = {"prompt": PROMPT}
         qa = RetrievalQA.from_chain_type(llm=self.llm, chain_type="stuff", retriever=vectorstore.as_retriever(), chain_type_kwargs=chain_type_kwargs)
-        query = "Wie benutze ich die Funktion RetrievalQA.from_chain_type. Gib mir ein codebeispiel"
+        query = "Bitte zeige mir anhand eines Codebeispiels wie man die Methode from_chain_type der Klasse RetrievalQA benutzt."
         retval = qa.run(query)
         print(f"RetrievalQA object created:",retval)
 

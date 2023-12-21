@@ -1,7 +1,8 @@
+import torch
 from src.chatbot.basic_module import Chatbot
 
 
-def mainssss():
+def main():
     print("Chatbot")
 
     # Specify the model path
@@ -18,16 +19,22 @@ def mainssss():
     output_dict = chatbot.run_chat(input_text)
 
 
-from src.chatbot.vectordb_module import Vec
+from src.chatbot.vectordb_module import LumidoraVectorDB
 
-def main():
+def mainkkk():
     print("Vektor")
+
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    print(f"Verwendetes Gerät: {'cuda'}")
+
+        # Initialisieren Sie das Modell mit GPU-Unterstützung
+    #model = HuggingfaceModel('gpt2').to(device)
 
     # Specify the model path
     model_path = "C:/_dev/repositories/Lumidora/resources/llm/resources/mistral-7b-openorca.Q4_0.gguf"
 
     # Create an instance of the Chatbot class
-    vec = Vec(model_path)
+    vec = LumidoraVectorDB(model_path)
 
     # Define template and input text
 

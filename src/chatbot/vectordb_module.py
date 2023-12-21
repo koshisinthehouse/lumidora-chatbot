@@ -48,6 +48,8 @@ class LumidoraVectorDB:
         vectorstore = FAISS.from_documents(documents, embeddings)
 
         print("Vektorstore erstellt aus Dokumente")
+        
+        exit
 
         #with open("vectorstore.pkl", "wb") as f:
             #pickle.dump(vectorstore, f)

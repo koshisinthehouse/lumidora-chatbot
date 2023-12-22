@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from src.chatbot import basic_router
+from src.chatbot.api.router import basic_router
 from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI()

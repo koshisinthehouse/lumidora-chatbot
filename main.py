@@ -2,7 +2,7 @@ import torch
 from src.chatbot.basic_module import Chatbot
 
 
-def main():
+def maikn():
     print("Chatbot")
 
     # Specify the model path
@@ -21,27 +21,57 @@ def main():
 
 from src.chatbot.vectordb_module import LumidoraVectorDB
 
-def mainkkk():
-    print("Vektor")
+from src.chatbot.ui.iface import GradioApp
 
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    print(f"Verwendetes Gerät: {'cuda'}")
+
+import uvicorn
+
+
+import threading
+
+
+
+def main():
+
+
+    #t1 = threading.Thread(target=uvicorn.run, args=("src.chatbot.api.fastapi:app",), kwargs={"host": "0.0.0.0", "port": 8000}, daemon=True)
+    #t2 = threading.Thread(target=gradio_app)
+
+    #t1.start()
+    #t2.start()
+
+    #t1.join()
+    #t2.join()
+
+    app = GradioApp()
+    app.run()
+
+
+
+    #uvicorn.run("src.chatbot.api.fastapi:app", host="0.0.0.0", port=8000, reload=True)
+    #print("api started.")
+    
+    
+    #print("Vektor")
+
+    #device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    #print(f"Verwendetes Gerät: {'cuda'}")
 
         # Initialisieren Sie das Modell mit GPU-Unterstützung
     #model = HuggingfaceModel('gpt2').to(device)
 
-    # Specify the model path
-    model_path = "C:/_dev/repositories/Lumidora/resources/llm/resources/mistral-7b-openorca.Q4_0.gguf"
-
+    
     # Create an instance of the Chatbot class
-    vec = LumidoraVectorDB(model_path)
+    #vec = LumidoraVectorDB("C:/_dev/repositories/Lumidora/resources/llm/resources/mistral-7b-openorca.Q4_0.gguf", "")
+    #vec = LumidoraVectorDB("./vector_db.faiss")
+    #vec.create_vector_db("./datastore")
 
     # Define template and input text
 
     
 
     # Run the chat using the defined template and input text
-    output_dict = vec.run()
+    
 
 if __name__ == "__main__":
     main()

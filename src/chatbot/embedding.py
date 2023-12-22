@@ -4,7 +4,7 @@ from langchain.embeddings import GPT4AllEmbeddings
 from langchain.vectorstores.faiss import FAISS
 from numpy import vectorize
 
-class LumidoraVectorDB:
+class LumidoraEmbedding:
 
     def __init__(self, vector_db_path):
         self.vector_db_path = vector_db_path

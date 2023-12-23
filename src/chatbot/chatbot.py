@@ -49,7 +49,7 @@ class LumidoraChatbot:
             callbacks=self.callbacks,
             verbose=True,
             streaming=True,
-            backend="phi2",
+            backend="llama",
         )
 
         # define response schemas and parser using the text_schemas from configuration
@@ -59,7 +59,9 @@ class LumidoraChatbot:
         # create prompt template
         prompt = PromptTemplate(template=configuration.template, input_variables=["input"], partial_variables={"format_instructions": format_instructions})
         llm_chain = LLMChain(prompt=prompt, llm=self.llm, verbose=True)
-
+        
+        
+        
         # run the chain with input
         output =llm_chain(input_text)
         print(f"output: [[[ {output.get('text')} ]]]")

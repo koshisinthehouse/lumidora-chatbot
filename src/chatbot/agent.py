@@ -35,21 +35,17 @@ class LumidoraAgent:
         chatbot = LumidoraChatbot();
         return chatbot.run_chat(text,config)
 
-    def add_text(self, text, destination):
-        if destination in self.directories:
-            destination_dir = self.directories[destination]
+    def add_text(self, text):
+        destination_dir = self.directories["datastore"]
+        # Generieren eines Hash-Namens aus dem Textinhalt
+        hash_object = hashlib.sha256(text.encode())  # Text muss kodiert werden
+        hex_dig = hash_object.hexdigest()  # Erhalten des Hexadezimal-Digests des Hash
+        file_name = f"{hex_dig}.txt"  # Erstellen des Dateinamens
 
-            # Generieren eines Hash-Namens aus dem Textinhalt
-            hash_object = hashlib.sha256(text.encode())  # Text muss kodiert werden
-            hex_dig = hash_object.hexdigest()  # Erhalten des Hexadezimal-Digests des Hash
-            file_name = f"{hex_dig}.txt"  # Erstellen des Dateinamens
-
-            file_path = os.path.join(destination_dir, file_name)
-            with open(file_path, 'w') as file:
-                file.write(text)
-            print(f"Text erfolgreich in {file_path} gespeichert.")
-        else:
-            print(f"{destination} ist kein gültiges Zielverzeichnis.")
+        file_path = os.path.join(destination_dir, file_name)
+        with open(file_path, 'w') as file:
+            file.write(text)
+        print(f"Text erfolgreich in {file_path} gespeichert.")
             
     def add_item(self, item_path, destination):
         # Überprüfen, ob das Zielverzeichnis gültig ist

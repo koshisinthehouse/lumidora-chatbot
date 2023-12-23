@@ -5,7 +5,7 @@ def maikn():
     print("Chatbot")
 
     # Specify the model path
-    model_path = "C:/_dev/repositories/Lumidora/resources/llm/resources/mistral-7b-openorca.Q4_0.gguf"
+    model_path = "C:/_dev/repositories/Lumidora/resources/llm/resources/ggml-model-q4_0.bin"
 
 
 
@@ -66,26 +66,58 @@ Die Verordnung mit dem Titel „Grundlagen für den Wiederaufbau der argentinisc
 Bitcoin legte am Freitagmorgen leicht zu und stieg erneut kurzfristig über die 44.000-Dollar-Marke. Zuletzt notierte der Kurs der ältesten Kryptowährung laut dem Analysehaus Coinmarketcap bei 43.932,59 Dollar (Stand: 8:18 Uhr). Damit verzeichnete Bitcoin seit Jahresbeginn ein Kursplus von mehr als 164 Prozent.
     
                    
-                   """,destination="temp")
-    
-    
-    
+                   """)
     
     
     config_json = """
     {
-        "model_path": "D:/Lumidora/resources/llm/resources/openchat_3.5.Q4_K_M.gguf",
-        "template": "You are an employee of a professional translation agency and receive a text in German. You are asked to translate this text into perfect English. Here is the German text you have to translate: {input} . Output information: {format_instructions}",
+        "model_path": "C:/_dev/repositories/Lumidora/resources/llm/resources/mistral-7b-openorca.Q4_0.gguf",
+        "template": "Interprete the text and evaluate the text. sentiment: is the text in a positive, neutral or negative sentiment? subjdect: What subject is the text about? Use exactly one word. Just return the JSON, do not add ANYTHING, NO INTERPRETATION!\\n text: {input} \\n{format_instructions}",
         "text_schemas": [
             {
-                "name": "translation",
-                "description": "The translated text"
+                "name": "sentiment",
+                "description": "Is the text positive, neutral or negative? Only provide these words"
+            },
+            {
+                "name": "subject",
+                "description": "What subject is the text about? Use exactly one word."
             }
         ]
     }
     """
 
-    text = "Generiere eine hochwertige und realistische Illustration einer Comicfigur, die als Grundlage für künstliche Intelligenz auf einem YouTube-Kanal dienen soll. Die Figur soll eine fröhliche und freundliche Ausstrahlung haben, gepaart mit einem charismatischen Erscheinungsbild."
+    text = "I ordered Pizza Salami for 9.99$ and it was awesome!"
+    
+    
+    config_json = """
+    {
+        "model_path": "C:/_dev/repositories/Lumidora/resources/llm/resources/mistral-7b-instruct-v0.2.Q6_K.gguf",
+        "template": "You are a highly skilled content creator known for producing viral YouTube videos. Your task is to create engaging and informative content that resonates with the target audience and maximizes viewer engagement. Your video should be SEO-optimized to reach the widest audience possible.Begin by crafting an attention-grabbing introduction that hooks the viewer in the first few seconds. Ensure that the introduction is directly related to the video topic and includes at least one of the keywords.\\nvideo_topic: the topic of the video\\nkeywords: top words in the video\\nmain_text: the main text of the video\\n\\ntext: {input}\\n{format_instructions}",
+        "text_schemas": [
+            {
+                "name": "video_topic",
+                "description": "the video headline"
+            },
+            {
+                "name": "keywords",
+                "description": "main words in the video"
+            },
+            {
+                "name": "main_text",
+                "description": "Proceed with the main content of the video. The content should be informative, engaging, and structured in a way that keeps the audience interested throughout the video. Use the provided keywords naturally throughout the discussion to enhance SEO without compromising the quality of the content."
+            }
+        ]
+    }
+    """
+
+    text = "Generiere ein Video über Bitcoin und die aktuellsten Bitcoin Finanzdaten."
+    
+    
+    
+   
+    
+    
+    
     
     response = agent.question(text, config_json)
     print(response)

@@ -1,7 +1,7 @@
-langchain==0.0.352
-gpt4all==2.0.2
-fastapi==0.104.1
-uvicorn==0.24.0.post1
+langchain
+gpt4all
+fastapi
+uvicorn
 faiss-cpu
 chardet
 gradio

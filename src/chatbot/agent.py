@@ -3,6 +3,7 @@ import os
 import shutil
 import webbrowser
 from src.chatbot.embedding import LumidoraEmbedding
+from src.chatbot.chatbot import LumidoraChatbot
 
 class LumidoraAgent:
     def __init__(self, name, base_dir):
@@ -29,6 +30,10 @@ class LumidoraAgent:
     def open_agent_directory(self):
         print(f"Open {self.agent_dir}.")
         webbrowser.open(self.agent_dir)
+
+    def question(self, text, config):
+        chatbot = LumidoraChatbot();
+        return chatbot.run_chat(text,config)
 
     def add_text(self, text, destination):
         if destination in self.directories:

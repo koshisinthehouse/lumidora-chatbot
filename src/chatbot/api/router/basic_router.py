@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from src.chatbot.basic_module import Chatbot
+from src.chatbot.chatbot import LumidoraChatbot
 from pydantic import BaseModel, constr
 
 router = APIRouter(prefix="/basic")
@@ -16,10 +16,10 @@ async def prompt(basicPrompt: BasicPrompt) -> BasicPromptResopnse:
     print("Chatbot")
 
     # Specify the model path
-    model_path = "D:/Lumidora/resources/llm/mistral-7b-openorca.Q4_0.gguf"
+    model_path = "C:/_dev/repositories/Lumidora/resources/llm/resources/openchat_3.5.Q4_K_M.gguf"
 
     # Create an instance of the Chatbot class
-    chatbot = Chatbot(model_path)
+    chatbot = LumidoraChatbot(model_path)
 
     # Define template and input text
 

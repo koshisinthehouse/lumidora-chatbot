@@ -1,6 +1,5 @@
 import os
 import torch
-from src.chatbot.basic_module import Chatbot
 
 
 def maikn():
@@ -9,15 +8,6 @@ def maikn():
     # Specify the model path
     model_path = "C:/_dev/repositories/Lumidora/resources/llm/resources/mistral-7b-openorca.Q4_0.gguf"
 
-    # Create an instance of the Chatbot class
-    chatbot = Chatbot(model_path)
-
-    # Define template and input text
-
-    input_text = "Generiere eine hochwertige und realistische Illustration einer Comicfigur, die als Grundlage für künstliche Intelligenz auf einem YouTube-Kanal dienen soll. Die Figur soll eine fröhliche und freundliche Ausstrahlung haben, gepaart mit einem charismatischen Erscheinungsbild."
-
-    # Run the chat using the defined template and input text
-    output_dict = chatbot.run_chat(input_text)
 
 
 from src.chatbot.ui.iface import GradioApp
@@ -58,8 +48,49 @@ def main():
     agent.open_agent_directory()
     
        
-    agent.add_text(text="Ein KAKADUA ist ein schwarzes rundes Loch.",destination="temp")
+    agent.add_text(text="""
+                   
+                   
+                   Bitcoin-Prognosen – das Wichtigste vorweg
+Bitcoin (BTC) ist die erste und bekannteste Kryptowährung und wird oft als Benchmark für den Kryptowährungsmarkt verwendet. Sie wurde von einer anonymen Person oder Gruppe von Personen unter dem Pseudonym Satoshi Nakamoto geschaffen und in einem 2008 veröffentlichten Whitepaper vorgestellt.
+Die Kryptowährung Bitcoin ist eine dezentralisierte digitale Währung, die auf einer Technologie namens Blockchain basiert. Im sogenannten Ledger (Hauptbuch) werden alle Transaktionen weltweit verteilt in einem Netzwerk von Computern aufzeichnet.
+Das Kryptowährungspaar BTC/USD stellt den Wechselkurs zwischen Bitcoin (BTC) und dem US-Dollar (USD) dar. Dieses Paar wird häufig für den Handel verwendet und ist ein wichtiger Maßstab für die Beurteilung des Wertes von Bitcoin in traditioneller Währung.
+Der BTC-Kurs in USD kann sehr volatil sein und wird von verschiedenen Faktoren beeinflusst, darunter Marktstimmung, Akzeptanz, regulatorische Entwicklungen und makroökonomische Bedingungen.
+Bitcoin wird oft als Wertaufbewahrungsmittel, als digitales Gold und als mögliche Absicherung gegen Inflation angesehen. Er hat als Anlageobjekt an Beliebtheit gewonnen und wird für Transaktionen sowie als Mittel zur grenzüberschreitenden Wertübertragung verwendet.
+Das bisherige Allzeithoch hat der Bitcoin im November 2021 bei 69.000 USD erreicht, sein letztes lokales Tief im November 2022 bei $15.476.
+Hinweis: Die aufgeführten Szenarien entstehen aus meiner persönlichen Einschätzung und Erfahrung. Sie stellen eine Zusammenfassung der wahrscheinlichsten Kursspanne für die jeweilige Zeiteinheit dar. Handeln Sie angemessene Positionsgrößen nach Ihrem individuellen Risikomanagement. Trading im volatilen Krypto-Markt ist aufgrund der stärkeren Kursschwankungen wesentlich riskanter als im Forex- oder Aktien-Markt.
+               
+               Die argentinische Außenministerin Diana Mondino gab bekannt, dass ab sofort eine neue Regelung die legale Verwendung von Bitcoin in bestimmten rechtlichen Transaktionen ermöglicht. In einem entsprechenden Beitrag auf X bestätigte Mondino, dass die Verordnung, die auf wirtschaftliche Reformen und Deregulierung abzielt, in spezifischen Fällen die Verwendung von Bitcoin und anderer Kryptowährungen als Zahlungsmittel vorsieht. 
+
+Die Verordnung mit dem Titel „Grundlagen für den Wiederaufbau der argentinischen Wirtschaft“ wurde am 20. Dezember verabschiedet. Obwohl Kryptowährungen im zugehörigen Entwurf nicht explizit genannt wurden, gelten entsprechende Bestimmungen für sie, die sich auf die Verwendung von Währungen beziehen, die kein gesetzliches Zahlungsmittel in Argentinien sind. „Wir ratifzieren und bestätigten, dass in Argentinien Geschäftsverträge ab sofort mit Bitcoin gezahlt werden können“, wie Mondino dahingehend verdeutlicht. „Das gilt auch für andere Kryptowährungen“, so Außenministerin Mondino weiter.
+
+Bitcoin legte am Freitagmorgen leicht zu und stieg erneut kurzfristig über die 44.000-Dollar-Marke. Zuletzt notierte der Kurs der ältesten Kryptowährung laut dem Analysehaus Coinmarketcap bei 43.932,59 Dollar (Stand: 8:18 Uhr). Damit verzeichnete Bitcoin seit Jahresbeginn ein Kursplus von mehr als 164 Prozent.
     
+                   
+                   """,destination="temp")
+    
+    
+    
+    
+    
+    config_json = """
+    {
+        "model_path": "C:/_dev/repositories/Lumidora/resources/llm/resources/openchat_3.5.Q4_K_M.gguf",
+        "template": "You are an employee of a professional translation agency and receive a text in German. You are asked to translate this text into perfect English. Here is the German text you have to translate: {input} . Output information: {format_instructions}",
+        "text_schemas": [
+            {
+                "name": "translation",
+                "description": "The translated text"
+            }
+        ]
+    }
+    """
+
+    text = "Generiere eine hochwertige und realistische Illustration einer Comicfigur, die als Grundlage für künstliche Intelligenz auf einem YouTube-Kanal dienen soll. Die Figur soll eine fröhliche und freundliche Ausstrahlung haben, gepaart mit einem charismatischen Erscheinungsbild."
+    
+    response = agent.question(text, config_json)
+    print(response)
+
     
     #lumidora.remove_agent("Agent1")
 

@@ -1,5 +1,4 @@
 import os
-import torch
 
 
 def maikn():
@@ -75,7 +74,7 @@ Bitcoin legte am Freitagmorgen leicht zu und stieg erneut kurzfristig über die 
     
     config_json = """
     {
-        "model_path": "C:/_dev/repositories/Lumidora/resources/llm/resources/openchat_3.5.Q4_K_M.gguf",
+        "model_path": "D:/Lumidora/resources/llm/resources/openchat_3.5.Q4_K_M.gguf",
         "template": "You are an employee of a professional translation agency and receive a text in German. You are asked to translate this text into perfect English. Here is the German text you have to translate: {input} . Output information: {format_instructions}",
         "text_schemas": [
             {

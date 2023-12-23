@@ -44,7 +44,7 @@ def main():
     agent = lumidora.get_agent("Agent1")
     if agent:
         print(f"Gefunden: {agent.name}")
-    agent.open_agent_directory()
+    #agent.open_agent_directory()
     
        
     agent.add_text(text="""

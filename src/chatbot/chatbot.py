@@ -3,7 +3,52 @@ from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.llms import GPT4All
 from langchain.output_parsers import ResponseSchema, StructuredOutputParser
 from langchain.prompts import PromptTemplate
+from langchain import LLMChain
+from langchain.callbacks.base import BaseCallbackHandler
+from typing import Any, Dict, List, Union, Optional
+from langchain.callbacks.base import BaseCallbackManager
+from uuid import UUID
+from langchain.agents import initialize_agent, load_tools
+from langchain.callbacks.base import BaseCallbackHandler
+from langchain.schema import AgentAction
+from langchain.schema.output import ChatGenerationChunk, GenerationChunk
 
+class MyCustomHandlerOne(BaseCallbackHandler):
+    def on_llm_start(
+        self, serialized: Dict[str, Any], prompts: List[str], **kwargs: Any
+    ) -> Any:
+        print(f"on_llm_start {serialized}")
+
+    async def on_llm_new_token(
+        self,
+        token: str,
+        *,
+        verbose:any,
+        chunk: Optional[Union[GenerationChunk, ChatGenerationChunk]] = None,
+        run_id: UUID,
+        parent_run_id: Optional[UUID] = None,
+        tags: Optional[List[str]] = None,
+    ) -> None:
+        print(f"on_new_token {token}")
+
+    def on_llm_error(
+        self, error: Union[Exception, KeyboardInterrupt], **kwargs: Any
+    ) -> Any:
+        """Run when LLM errors."""
+
+    def on_chain_start(
+        self, serialized: Dict[str, Any], inputs: Dict[str, Any], **kwargs: Any
+    ) -> Any:
+        print(f"on_chain_start {serialized}")
+
+    def on_tool_start(
+        self, serialized: Dict[str, Any], input_str: str, **kwargs: Any
+    ) -> Any:
+        print(f"on_tool_start {serialized['name']}")
+
+    def on_agent_action(self, action: AgentAction, **kwargs: Any) -> Any:
+        print(f"on_agent_action {action}")
+        
 class LumidoraChatbotConfiguration:
     def __init__(self, model_path, template, text_schemas):
         self.model_path = model_path
@@ -30,7 +75,10 @@ class LumidoraChatbotConfiguration:
 
 class LumidoraChatbot:
     def __init__(self):
-        self.callbacks = [StreamingStdOutCallbackHandler()]
+        self.callbacks = [MyCustomHandlerOne()]
+        
+        self.callback_manager = BaseCallbackManager([MyCustomHandlerOne()])
+        
 
     def run_chat(self, input_text, config_json):
         # Parse the JSON string into a ChatbotConfiguration object
@@ -40,7 +88,9 @@ class LumidoraChatbot:
         # Initialize the LLM with the model from configuration
         self.llm = GPT4All(
             model=configuration.model_path,
-            callbacks=self.callbacks,
+            callback_manager=self.callback_manager,
+            verbose=True,
+            streaming=True,
             backend="llama",
         )
 
@@ -62,8 +112,13 @@ class LumidoraChatbot:
 
 
         # Run the chat with the given input
-        output = self.llm(message.to_string())
-        print("Model output:", output)  # Print the raw model output
+        output=""
+        #output = self.llm(message.to_string())
+        #print("Model output:", output)  # Print the raw model output
+        
+        llm_chain = LLMChain(prompt=prompt, llm=self.llm)
+        print(llm_chain.run(message.to_string()))
+        
 
         # Parse the output
         output_dict = self.parser.parse(output)

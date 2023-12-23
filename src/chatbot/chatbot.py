@@ -49,6 +49,8 @@ class LumidoraChatbot:
             callbacks=self.callbacks,
             verbose=True,
             streaming=True,
+            max_tokens=2048,
+            n_predict=2048,
             backend="llama",
         )
 

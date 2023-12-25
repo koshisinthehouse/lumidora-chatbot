@@ -6,10 +6,10 @@ from src.chatbot.agent import LumidoraAgent
 
 class Lumidora:
     def __init__(self):
-        self.base_temp_dir = tempfile.gettempdir()
-        self.lumidora_dir = os.path.join(self.base_temp_dir, "Lumidora")
-        self.agent_dir = os.path.join(self.lumidora_dir, "Agents")
-        self.agents = []
+        self.base_temp_dir:str = tempfile.gettempdir()
+        self.lumidora_dir:str = os.path.join(self.base_temp_dir, "Lumidora")
+        self.agent_dir:str = os.path.join(self.lumidora_dir, "Agents")
+        self.agents: list[LumidoraAgent] = []
         self.scan_and_create_agents()
 
     def scan_and_create_agents(self):

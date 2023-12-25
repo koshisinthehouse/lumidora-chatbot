@@ -1,27 +1,26 @@
-from gc import callbacks
 import json
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.llms import GPT4All
 from langchain.output_parsers import ResponseSchema, StructuredOutputParser
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
-from langchain.prompts import ChatPromptTemplate
+
 
 class LumidoraChatbotConfiguration:
-    def __init__(self, model_path, template, text_schemas):
+    def __init__(self, model_path:str, template:str, text_schemas:list[ResponseSchema]):
         self.model_path = model_path
         self.template = template
         self.text_schemas = text_schemas  # Now handling multiple text schemas
 
     @classmethod
-    def from_json(cls, json_str):
+    def from_json(cls, json_str:str):
         # Parse the JSON string into a dictionary
         config_dict = json.loads(json_str)
         print("Loaded configuration:", config_dict)  # Print the loaded configuration
 
         # Extract and instantiate all text schemas
         text_schemas_dicts = config_dict.pop("text_schemas")
-        text_schemas = []
+        text_schemas:list[ResponseSchema] = []
         for schema in text_schemas_dicts:
             text_schema = ResponseSchema(name=schema["name"], description=schema["description"])
             text_schemas.append(text_schema)
@@ -37,7 +36,7 @@ class LumidoraChatbot:
         # Open Issue: https://github.com/langchain-ai/langchain/issues/7747
         self.callbacks = [StreamingStdOutCallbackHandler()]
 
-    def run_chat(self, input_text, config_json):
+    def run_chat(self, input_text:str, config_json:str):
         
         # parse the json string into a ChatbotConfiguration object
         configuration = LumidoraChatbotConfiguration.from_json(config_json)
@@ -69,7 +68,7 @@ class LumidoraChatbot:
         print(f"output: [[[ {output.get('text')} ]]]")
 
         # parse the output
-        parsed_output = self.parser.parse(output.get('text'))
+        parsed_output = self.parser.parse(str(output.get('text')))
         #print(f"parsed output: [[[ {parsed_output} ]]]")
 
         output_json_string = json.dumps(parsed_output)

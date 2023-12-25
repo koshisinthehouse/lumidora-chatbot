@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from src.chatbot.chatbot import LumidoraChatbot
+from chatbot.chat import LumidoraChatbot
 from pydantic import BaseModel, constr
 
 router = APIRouter(prefix="/basic")

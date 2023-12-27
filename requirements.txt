@@ -1,7 +1,7 @@
-langchain
-gpt4all
-fastapi
-uvicorn
-faiss-cpu
-chardet
-gradio
+langchain==0.0.335
+gpt4all==2.0.2
+fastapi==0.104.1
+uvicorn==0.24.0.post1
+faiss-cpu==1.7.4
+chardet==5.2.0
+gradio==4.11.0

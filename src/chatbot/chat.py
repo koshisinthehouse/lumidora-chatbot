@@ -6,8 +6,6 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, RetrievalQA
 from langchain.vectorstores.faiss import FAISS
 
-from datastore.retrieval_qa.base import BaseRetrievalQA
-
 class LumidoraChatbotConfiguration:
     def __init__(self, model_path:str, template:str, text_schemas:list[ResponseSchema]):
         self.model_path = model_path
@@ -62,8 +60,9 @@ class LumidoraChatbot:
         
         if(vectorstore):
             print("use vector store data.")
+            retriever = vectorstore.as_retriever()
             chain_type_kwargs = {"prompt":prompt}
-            qa:BaseRetrievalQA = RetrievalQA.from_chain_type(llm=self.llm, chain_type="stuff",retriever=vectorstore.as_retriever(), chain_type_kwargs=chain_type_kwargs)
+            qa = RetrievalQA.from_chain_type(llm=self.llm, chain_type="stuff",retriever=retriever, chain_type_kwargs=chain_type_kwargs)
             output = qa.run(input_text)
         else:
             print("default query")

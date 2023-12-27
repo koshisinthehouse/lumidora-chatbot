@@ -1,5 +1,28 @@
 {
-    "cSpell.words": [
-        "vectorstore"
-    ]
+    "[python]": {
+        "editor.codeLens": true,
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.logLevel": "Trace",
+    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.indexing": true,
+    "python.analysis.userFileIndexingLimit": -1,
+    "python.analysis.include":["{workspaceRoot}/**","**"],
+    "files.associations": {
+        "*.py": "python"
+    },
+    "git.confirmSync": false,
+    "editor.indentSize": "tabSize"
 }

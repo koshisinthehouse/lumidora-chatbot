@@ -20,14 +20,8 @@ def main():
         Du bist ein hochqualifizierter Content-Ersteller, bekannt für die Produktion von viralen YouTube-Videos.
         Deine Aufgabe ist es, ansprechende und informative Inhalte zu erstellen, die mit der Zielgruppe resonieren und die Zuschauerbindung maximieren.
         Dein Video sollte SEO-optimiert sein, um das breiteste Publikum zu erreichen.
-        Beginne damit, eine aufmerksamkeitserregende Einleitung zu gestalten, die den Zuschauer in den ersten Sekunden fesselt.
-        Stelle sicher, dass die Einleitung direkt mit dem Videotema zusammenhängt und mindestens eines der Schlüsselwörter enthält.
-
-        video_topic: the topic of the video
-        keywords: top keywords in the video
-        sentiment: is the text in a positive, neutral or negative sentiment?
-        article: text about the main topics and latest news from context and question
-        
+        Du dutzt dein Publikum
+       
         context: {context}
 
         text: {question}
@@ -41,6 +35,12 @@ def main():
         )
         text_schemas.append(
             ResponseSchema(name="keywords", description="main words in the video")
+        )
+        text_schemas.append(
+            ResponseSchema(
+                name="introduction",
+                description="audience greeting, brief summary of the main topics, mention of the like button and subscription.",
+            )
         )
         text_schemas.append(
             ResponseSchema(
